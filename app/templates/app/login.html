@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <title>Study Community 2022</title>
+</head>
+
+	
+	<header class="header header--loggedIn">
+		<div class="container">
+			<a href="{% url 'home' %}" class="header__logo">
+				<h1>Study Community</h1>
+			</a>
+
+{% block content %}      
+
+{% load crispy_forms_tags %}
+
+ 
+<div class="container py-5">
+  <div class="layout__box">
+    <div class="layout__boxHeader">
+      <h1>    S I G N -  I N</h1></div>
+      <div class="layout__body">
+        <div class="container py-5">
+          
+          <form method="POST">
+            {% csrf_token %}
+            {{ login_form|crispy }}
+            
+            <button class="btn btn" type="submit">Login</button>
+          </form>
+          <p class="text-center">Don't have an account? </p>
+        <div class="text-center"><a href="/register"><div class="btn-link" type="link" style="color:blue">Sign up</div></a>
+        
+        <!-- <p class="text-center">Forget Password? </p>
+        <div class="text-center"><a href="/passwordrecovery"><div class="btn-link" type="link" style="color:blue">Reset password</div></a>
+        </div></div> -->
+      </div>
+  </div>
+</div>
+{% endblock %}

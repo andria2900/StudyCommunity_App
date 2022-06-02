@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% block content %}
+<main class="create-room layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{{request.META.HTTP_REFERER}}">
+            <svg version="1.1"   width="32" height="32" viewBox="0 0 32 32">
+              <title>arrow-left</title>
+              <path
+                d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+              </path>
+            </svg>
+          </a>
+          <h3>Create/Update Study Room</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <form class="form" action="" method="POST">
+          
+          {% csrf_token %}
+        
+
+
+            <!-- Select your topic:
+        <select onchange="myFunction(this)">
+          <option>Physics</option>
+          <option>Maths</option>
+          <option>Django Programming</option>
+          <option>Web Application</option>
+        </select>
+        
+        <script>
+        function myFunction(selTag) {
+          var y = selTag.options[selTag.selectedIndex].text;
+          document.getElementById("topic_selected").innerHTML =  y;
+        }
+        </script> -->
+          <div class="form__group">
+            <label for="room_name">* Topic</label>
+            <input type="text" name="topic" id="room_name"/>
+          </div>
+
+          <div class="form__group">
+            <label for="room_name">* Room Name</label>
+            {{form.name}}
+          </div>
+
+          <div class="form__group">
+            <label for="room_description">* Room Description</label>
+            {{form.description}}
+          </div>
+
+
+          <div class="form__action">
+            <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+            <button class="btn btn--main" type="submit">Submit</button>
+          </div></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}
